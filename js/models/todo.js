@@ -18,8 +18,13 @@ var app = app || {};
 
 		// Toggle the `completed` state of this todo item.
 		toggle: function () {
+			var title = this.get('title').replace(' --done', '');
+			if (!this.get('completed')) {
+				title += ' --done';
+			} 
 			this.save({
-				completed: !this.get('completed')
+				completed: !this.get('completed'),
+				title: title
 			});
 		}
 	});
